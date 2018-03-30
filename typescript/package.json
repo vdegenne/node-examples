@@ -1,0 +1,14 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "exemple d'un programme Typescript",
+  "main": "index.js",
+  "scripts": {
+    "start": "./bin/app"
+  },
+  "author": "valentin degenne",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^2.8.1"
+  }
+}

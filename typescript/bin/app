@@ -1,0 +1,5 @@
+#!/c/Program Files/nodejs/node
+
+'use strict'
+
+console.log('test');
