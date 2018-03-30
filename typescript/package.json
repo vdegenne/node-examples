@@ -4,7 +4,8 @@
   "description": "exemple d'un programme Typescript",
   "main": "index.js",
   "scripts": {
-    "start": "./bin/app"
+    "start": "node ./bin/app",
+    "build": "rm -rf lib && tsc"
   },
   "author": "valentin degenne",
   "license": "MIT",
