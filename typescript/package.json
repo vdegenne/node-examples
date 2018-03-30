@@ -4,12 +4,15 @@
   "description": "exemple d'un programme Typescript",
   "main": "index.js",
   "scripts": {
-    "start": "node ./bin/app",
+    "start": "./bin/app",
     "build": "rm -rf lib && tsc"
   },
   "author": "valentin degenne",
   "license": "MIT",
   "devDependencies": {
     "typescript": "^2.8.1"
+  },
+  "dependencies": {
+    "@types/node": "^9.6.1"
   }
 }

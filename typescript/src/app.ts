@@ -1,9 +1,14 @@
 import { Contact, addressBook } from './addressBook';
 
-let contact: Contact = {
-    name: 'Jon Snow',
-    email: 'jon.snow@north.com',
-    phone: '5432-5432-5432'
-}
+export async function run() {
+    
+    let contact: Contact = {
+        name: 'Jon Snow',
+        email: 'jon.snow@north.com',
+        id: '84574R0'
+    }
+    
+    addressBook.push(contact);
 
-addressBook.push(contact)
+    console.log(addressBook);
+}
