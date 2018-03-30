@@ -14,3 +14,5 @@ yarn global typescript
 
 - on édite le fichier à convenance. Par exemple les propriétés `outDir`, `sourceMap`, `removeComments` peuvent être modifiées.
 - on édite aussi la propriété `include`.
+
+- `$ tsc` pour compiler
