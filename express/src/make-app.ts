@@ -96,3 +96,35 @@ export function makeSendApp(): express.Express {
 
   return app;
 }
+
+
+export function overlappingGetsApp() {
+  const app: express.Express = express();
+
+  app.get('*', (req, res) => {
+    res.send('first get');
+  });
+
+  app.get('*', (req, res) => {
+    res.send('second get');
+  });
+
+  return app;
+}
+
+export function UseAndGetApp() {
+  const app: express.Express = express();
+
+  app.get('*', (req, res) => {
+    res.send('d');
+  });
+
+  return app;
+}
+
+/* export function overlappingUsesApp() {
+  const app: express.Express = express();
+
+  app.use('*', ) return app;
+}
+ */
