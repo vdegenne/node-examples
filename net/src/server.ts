@@ -1,13 +1,16 @@
 import * as net from "net";
 
 const server = net.createServer((socket) => {
-  socket
-    .on('data', (data) => {
-      console.log(data);
-    })
-    .on('end', () => {
-      console.log('server has ended');
-    });
+  console.log('server is ready');
+  socket.write('hello from the server');
+});
+
+server.on('data', (data) => {
+  console.log(data.toString());
+});
+
+server.on('end', () => {
+  console.log('server has stopped');
 });
 
 server.listen(3001, () => {
