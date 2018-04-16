@@ -1,5 +1,5 @@
 // here are the main exports
-import {Readable, ReadableOptions, Writable, WritableOptions} from 'stream';
+import {Readable, ReadableOptions, Transform, TransformOptions, Writable, WritableOptions} from 'stream';
 
 export class MyReadableStream extends Readable {
   private str: string;
@@ -36,5 +36,22 @@ export class MyWritableStream extends Writable {
 
   getString() {
     return this.str;
+  }
+}
+
+
+export class MyTransformStream extends Transform {
+  private fromRegExp: RegExp;
+  private to: string;
+
+  constructor(from: string, to: string, opts?: TransformOptions) {
+    super(opts);
+    this.fromRegExp = new RegExp(`%${from}%`, 'g');
+    this.to = to;
+  }
+
+  _transform(chunk: any, enc: string, cb: Function) {
+    this.push(chunk.toString().replace(this.fromRegExp, this.to));
+    cb();
   }
 }

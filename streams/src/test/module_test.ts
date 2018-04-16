@@ -2,7 +2,7 @@ import * as chai from 'chai';
 import {createWriteStream} from 'fs';
 import {Readable, Writable} from 'stream';
 
-import {MyReadableStream, MyWritableStream} from '../streams-example';
+import {MyReadableStream, MyTransformStream, MyWritableStream} from '../streams-example';
 
 const assert = chai.assert;
 
@@ -72,5 +72,33 @@ suite('Streams', () => {
 
     // do the piping
     outStream.pipe(inStream);
+  });
+
+
+  test('this transforms the inside text by replacement', () => {
+    // initialize
+    const str = 'this is %placeholder%';
+    const outStream = new Readable;
+    const transformer = new MyTransformStream('placeholder', 'great');
+
+    // create the outStream
+    outStream.push(str);
+    outStream.push(null);
+
+    // create the inStream
+    const inStream = new Writable;
+    let _output = '';
+    inStream._write = (chunk, enc, cb) => {
+      _output += chunk.toString();
+      cb();
+    };
+
+    // assert
+    outStream.on('end', () => {
+      assert.equal(_output, 'this is great');
+    });
+
+    // do the piping stuff
+    outStream.pipe(transformer).pipe(inStream);
   });
 });
